@@ -9,10 +9,40 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/174cba21f6.js" crossorigin="anonymous"></script><!--Fontawesome用-->
   </head>
-  
-  
 
   <body>
-    <%= yield %>
+    <header class="border-bottom">
+      <nav class="navbar">
+
+        <div class="title navbar-brand">渋川屋</div>
+
+        <ul class="nav">
+          <li>
+            <%= link_to "About", about_path, class:"nav-btn-left btn btn-outline-primary text-dark" %>
+          </li>
+
+          <li>
+            <%= link_to "商品一覧", root_path, class:"nav-btn-center-left btn btn-outline-primary text-dark" %>
+          </li>
+
+          <li>
+            <%= link_to "新規登録", root_path, class:"nav-btn-center-right btn btn-outline-primary text-dark" %>
+          </li>
+
+          <li>
+            <%= link_to "ログイン", root_path, class:"nav-btn-right btn btn-outline-primary text-dark" %>
+          </li>
+        </ul>
+
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="border-top">
+      <!--取り扱う人の名前でも後で入れとく-->
+    </footer>
   </body>
 </html>

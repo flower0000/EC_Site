@@ -18,3 +18,36 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+//以下CSS記述
+main{
+  min-height: 800px;
+}
+
+header{
+  height: 71px;
+}
+
+.title{
+  font-size: 30px;
+}
+
+footer{
+  height: 60px;
+}
+
+.nav-btn-left{
+  margin-right: 15px;
+}
+
+.nav-btn-center-left{
+  margin-right: 15px;
+}
+
+.nav-btn-center-right{
+  margin-right: 15px;
+}
+
+.nav-btn-right{
+  margin-right: 45px;
+}
