@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
    before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)#サインインする前にここを実行してください．(resource)でログインする人の情報を取得．
-    #p resource ここの記述で中身を知れるメソッド
+    #p resource #ここの記述で中身を知れるメソッド
     case resource
     when Admin
       admin_root_path#pathは設定したい遷移先へのpathを指定(resourceの中身がAdminならここに遷移)
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    #p resource ここの記述で中身を知れるメソッド
+    #p resource #ここの記述で中身を知れるメソッド
     case resource
     when :admin
       new_admin_session_path#pathは設定したい遷移先へのpathを指定(resourceの中身がAdminならここに遷移)
