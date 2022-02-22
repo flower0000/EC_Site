@@ -1,15 +1,16 @@
 <!--商品登録画面-->
 <div class="container">
-
-  <div class="row">
-    <div>商品新規登録</div>
-  </div>
-
   <div class="row">
     <div class="mx-auto">
+      <div class="title" >商品新規登録</div>
       <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
         <h6>商品画像</h6>
-        <%= f.attachment_field :image %> <!--image_idだが画像入力時は_idは取り除いて入力-->
+        <%= f.attachment_field :item_images_images, multiple: true %>
+        <!--　:(子のテーブル名)_(image_id + s) =>:article_images_images (2つの"s"が必要です)。ただしrefileを使用するときはidを省略するので記述しない。
+        属性を追加：~~~ , multiple: true　-->
+
+        <!--このように設定すると、単一のファイルではなく複数ファイルの配列を受け取るようになります。（ファイルは1つでも可）
+        ※その後の処理の流れでは、アップロードされたファイル毎に個別で種々の処理が実行されていきます(*1)。-->
 
         <h6>商品名</h6>
         <%= f.text_field :name %>
