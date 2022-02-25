@@ -5,13 +5,18 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    @Item = Item.new(item_params)
-    @Item.save
-    redirect_to root_path#仮のリダイレクト先。後で編集
+    @item = Item.new(item_params)
+    @item.save
+    redirect_to admin_item_path(@item.id)
   end
 
   def show
-
+    @item = Item.find(params[:id])
+  #Itemモデルから登録した商品を探す
+    if @item.item_images.present?
+      @item_images = @item.item_images
+    end
+  #登録したItemモデルにアソシエーションしているitem_imagesモデルのデータを全て取得．ただしあれば。
   end
 
   def index

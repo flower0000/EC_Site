@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <h1 class="col-lg-3 bg-info">
+      商品詳細
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <% if @item_images.present? %>
+        <% @item_images.each do |item_image| %>
+          <%= attachment_image_tag item_image, :image, :fill, 300,300, format: 'jpeg' %>
+        <% end %>
+      <% elsif %>
+        <%= image_tag('no_image.jpg') %>
+      <% end %>
+    </div>
+
+    <div class="col-lg-5">
+      <div>商品名　<%= @item.name %></div>
+      <div>商品説明　<%= @item.introduction %></div>
+      <div>税込み価格(税抜き価格)　<%= @item.price * 1.10 %>(<%= @item.price %>)円</div>
+    </div>
+  </div>
+<!--もし揃えたいならtableで1要素ずつで並べる-->
+<!--項目は左端に縦積み-->
+
+  <div class="row">
+    <div class="mx-auto">
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-success" %>
+    </div>
+  </div>
+</div>
