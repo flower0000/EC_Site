@@ -6,12 +6,14 @@
 }
 
 .sidebar{
-  width: 100px;
-  min-height: 777px;
+  width: 200px;
+  min-height: 800px;
 
-  background-color: #fff;
-  background-image: radial-gradient(#7bded9 30%, transparent 30%);
-  background-size: 20px 20px;
+   background-color: #00bfff;
+   background-image:
+   repeating-linear-gradient(-45deg,
+   #fff, #fff 7px,
+   transparent 0, transparent 14px);
 }
 
 .image_box{
@@ -21,4 +23,5 @@
 .product_data{
   width: 500px;
   height: 400px;
+  margin-top: 56px;
 }

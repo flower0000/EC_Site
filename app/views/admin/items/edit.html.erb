@@ -1,10 +1,12 @@
-<!--商品登録画面-->
+<!--商品編集画面-->
 <div class="container">
   <div class="row">
     <div class="mx-auto">
-      <div class="title" >商品新規登録</div>
-      <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
-        <h6>商品画像</h6>
+
+      <div class="title" >登録情報更新</div>
+
+      <%= form_with model: @item, url: admin_item_path, local:true do |f| %>
+        <h6>商品画像(以前登録した画像は残りません)</h6>
         <%= f.attachment_field :item_images_images, multiple: true %>
         <!--　:(子のテーブル名)_(image_id + s) =>:article_images_images (2つの"s"が必要です)。ただしrefileを使用するときはidを省略するので記述しない。
         属性を追加：~~~ , multiple: true　-->
@@ -21,10 +23,9 @@
         <h6>税抜き価格</h6>
         <%= f.text_field :price %>円
 
-        <br /><%= f.submit '新規登録', class: "mt-3 btn btn-success" %>
+        <br /><%= f.submit '編集完了', class: "mt-3 btn btn-success" %>
       <% end %>
+
     </div>
-
   </div>
-
 </div>

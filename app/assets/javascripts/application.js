@@ -17,5 +17,8 @@
 
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
+// require turbolinks
+//↑↑必要であれば=を入れて使用可能にする
+
 //= require_tree .
