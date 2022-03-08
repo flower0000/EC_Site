@@ -4,15 +4,23 @@
   <div class="d-flex flex-colum">
     <div class="image_box">
       <h1 class="product_detail_title">商品詳細</h1>
-      <% if @item_images.present? %>
-        <% @item_images.each do |item_image| %>
-          <%= attachment_image_tag item_image, :image, :fill, 300,300, format: 'jpeg' %>
-        <% end %>
+
+        <% if @item_images.present? %>
+
+          <% @item_images.each do |item_image| %>
+            <div class="posted_image">
+            <!--スライドショー用のclass付与-->
+              <%= attachment_image_tag item_image, :image, :fill, 300,300, format: 'jpeg' %>
+            </div>
+          <% end %>
+
         <!--refileの複数画像表示は名前で決まる。数字なら1から。漢字や平仮名は要検証-->
-      <% elsif %>
-        <%= image_tag('no_image.jpg') %>
-      <% end %>
+        <% elsif %>
+          <%= image_tag('no_image.jpg') %>
+
+        <% end %>
     </div>
+  </div>
 
     <div class="product_data bg-white">
 
@@ -21,11 +29,10 @@
       <div>税込み価格(税抜き価格)　<%= @item.price * 1.10 %>(<%= @item.price %>)円</div>
 
       <div>
-        <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-success" %>
+        <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
       </div>
 
     </div>
-  </div>
 
   <div class="sidebar ml-auto"></div>
 </div>
