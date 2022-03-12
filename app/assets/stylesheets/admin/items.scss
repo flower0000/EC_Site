@@ -16,8 +16,11 @@
    transparent 0, transparent 14px);
 }
 
-.image_box{
+#image_box{
   width: 300px;
+  height: 370px;
+//heightがありすぎると領域が広がりすぎてしまうため設定
+//設定しないとmainの800px,sidebar領域の800pxにつられてしまう
 }
 
 .product_data{

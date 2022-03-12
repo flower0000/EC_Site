@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/ec2-user/environment/EC_Site/app/views/admin/items/show.html.erb:15 ActionView::CompiledTemplates#_app_views_admin_items_show_html_erb___2150303195850472841_70285797742540:
+
+    [1;34m10[0m:         <% @item_images.each_with_index do |item_image, index| %>
+    [1;34m11[0m:           <% if index == 0 %>
+    [1;34m12[0m:             <li data-target="#image_box" data-slide-to="0" class="active"></li>
+    [1;34m13[0m:           <% else %>
+    [1;34m14[0m:             <% binding.pry %>
+ => [1;34m15[0m:             <li data-target="#image_box" data-slide-to="#{index}"></li>
+    [1;34m16[0m:           <% end %>
+    [1;34m17[0m:         <% end %>
+    [1;34m18[0m:       </ol>
+    [1;34m19[0m:       <!--eachメソッドで要素の数だけ0から始まる数字が欲しい。-->
+    [1;34m20[0m:       <!--そのためitem_imageはここでは未使用-->
+

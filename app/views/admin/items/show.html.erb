@@ -2,23 +2,49 @@
   <div class="sidebar mr-auto"></div>
 
   <div class="d-flex flex-colum">
-    <div class="image_box">
+    <div id="image_box" class="carousel slide" data-ride="carousel" data-interval=3000>
+    <!--3000ミリ秒でスライド-->
       <h1 class="product_detail_title">商品詳細</h1>
 
-        <% if @item_images.present? %>
+      <% if @item_images.present? %>
 
+        <ol class="carousel-indicators">
+          <li data-target="#image_box" data-slide-to="0" class="active"></li>
+
+
+
+          <li data-target="#image_box" data-slide-to="1"></li>
+          <li data-target="#image_box" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner">
           <% @item_images.each do |item_image| %>
-            <div class="posted_image">
-            <!--スライドショー用のclass付与-->
-              <%= attachment_image_tag item_image, :image, :fill, 300,300, format: 'jpeg' %>
-            </div>
+            <% if @image_number == 1 %>
+              <div class="carousel-item active">
+                <%= attachment_image_tag item_image, :image, :fill, 300,300, format: 'jpeg' %>
+              </div>
+               <!--1枚目のみactiveをclassに付与-->
+              <% @image_number = @image_number + 1 %>
+              <!--if文で2回目以降を条件分岐でelse側の分を実行-->
+            <% else %>
+              <div class="carousel-item">
+                <%= attachment_image_tag item_image, :image, :fill, 300,300, format: 'jpeg' %>
+              </div>
+            <% end %>
           <% end %>
-
-        <!--refileの複数画像表示は名前で決まる。数字なら1から。漢字や平仮名は要検証-->
-        <% elsif %>
-          <%= image_tag('no_image.jpg') %>
-
-        <% end %>
+          <a class="carousel-control-prev" href="#image_box" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#image_box" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      <!--refileの複数画像表示は名前で決まる。数字なら1から。漢字や平仮名は要検証-->
+      <% elsif %>
+        <%= image_tag('no_image.jpg') %>
+      <% end %>
     </div>
   </div>
 
