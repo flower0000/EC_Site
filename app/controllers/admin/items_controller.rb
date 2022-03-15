@@ -13,7 +13,7 @@ class Admin::ItemsController < ApplicationController
   def show
     @image_number = 1
     #写真のスライドショー実行時に使用
-    
+
     @item = Item.find(params[:id])
   #Itemモデルから登録した商品を探す
     if @item.item_images.present?
@@ -23,7 +23,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-
+    @items = Item.all
   end
 
   def edit

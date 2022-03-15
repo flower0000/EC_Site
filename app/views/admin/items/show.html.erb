@@ -9,13 +9,15 @@
       <% if @item_images.present? %>
 
         <ol class="carousel-indicators">
-          <li data-target="#image_box" data-slide-to="0" class="active"></li>
-
-
-
-          <li data-target="#image_box" data-slide-to="1"></li>
-          <li data-target="#image_box" data-slide-to="2"></li>
+          <% @item_images.each_with_index do |item_image, index| %>
+            <% if index == 0 %>
+              <li data-target="#image_box" data-slide-to="0" class="active"></li>
+            <% else %>
+              <li data-target="#image_box" data-slide-to="#{index}"></li>
+            <% end %>
+          <% end %>
         </ol>
+        <!--初回のみactiveのclass付与が必要なため、ifで条件分岐-->
 
         <div class="carousel-inner">
           <% @item_images.each do |item_image| %>
@@ -26,6 +28,7 @@
                <!--1枚目のみactiveをclassに付与-->
               <% @image_number = @image_number + 1 %>
               <!--if文で2回目以降を条件分岐でelse側の分を実行-->
+              <!--インジケーターのようにindexで持たせても出来る。面倒くさいが無理やりこうすることもできる。-->
             <% else %>
               <div class="carousel-item">
                 <%= attachment_image_tag item_image, :image, :fill, 300,300, format: 'jpeg' %>
@@ -42,17 +45,32 @@
           </a>
         </div>
       <!--refileの複数画像表示は名前で決まる。数字なら1から。漢字や平仮名は要検証-->
-      <% elsif %>
-        <%= image_tag('no_image.jpg') %>
+      <% else %>
+        <div>
+          <%= image_tag('no_image.jpg') %>
+        </div>
       <% end %>
     </div>
   </div>
 
     <div class="product_data bg-white">
 
-      <div>商品名　<%= @item.name %></div>
-      <div>商品説明　<%= @item.introduction %></div>
-      <div>税込み価格(税抜き価格)　<%= @item.price * 1.10 %>(<%= @item.price %>)円</div>
+      <table class="table">
+        <tr>
+          <td>商品名</td>
+          <td><%= @item.name %></td>
+        </tr>
+
+        <tr>
+          <td>税込み価格(税抜き価格)</td>
+          <td><%= @item.price * 1.10 %>(<%= @item.price %>)円</td>
+        </tr>
+        <tr>
+          <td>商品説明</td>
+          <td><%= safe_join(@item.introduction.split("\n"),tag(:br)) %></td>
+          <!--safe_join(@item.introduction.split("\n"),tag(:br)),これによってform_withの改行入力が実際に反映できる。-->
+        </tr>
+      </table>
 
       <div>
         <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
