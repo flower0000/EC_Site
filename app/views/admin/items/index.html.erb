@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="d-flex">
+    <% @items.each do |item| %>
+      <div class="thumbnail-box">
+        <div>
+          <% thumbnail_images = item.item_images %>
+        <!--1つの商品とアソシエーションを組んだ全写真データを取得-->
+          <% thumbnail_image = thumbnail_images[0] %>
+        <!--サムネイル用に先頭の写真1枚だけ取得-->
+          <%= link_to admin_item_path(item.id) do %>
+            <%= attachment_image_tag thumbnail_image, :image, :fill, 300,225, format: 'jpeg' %>
+          <% end %>
+        <!--ここまでの記述で、取得した写真を載せる-->
+        </div>
+
+        <div class="font-weight-bold"><!--太字のclass-->
+          <%= item.name %>
+        </div>
+
+        <div class="font-weight-bold">
+          ￥<%= item.price %>
+        </div>
+      </div>
+    <% end %>
+    <!--商品の数だけ繰り返す-->
+
+  </div>
+</div>

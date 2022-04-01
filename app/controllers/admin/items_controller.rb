@@ -24,6 +24,7 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    #Itemモデルの全データ取得
   end
 
   def edit
