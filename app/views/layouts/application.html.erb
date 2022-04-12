@@ -14,7 +14,9 @@
     <header class="border-bottom">
       <nav class="navbar">
 
-        <div class="title navbar-brand">渋川屋</div>
+        <div class="title navbar-brand">
+          <%= link_to "渋川屋", root_path, class:"text-dark" %>
+        </div>
         <% if admin_signed_in? %>
           <ul class="nav">
             <li>
@@ -22,7 +24,7 @@
             </li>
 
             <li>
-              <%= link_to "商品一覧", about_path, class:"nav-btn-center-left btn btn-outline-primary text-dark" %>
+              <%= link_to "商品一覧", admin_items_path, class:"nav-btn-center-left btn btn-outline-primary text-dark" %>
             </li>
 
             <li>
@@ -48,11 +50,11 @@
             </li>
 
             <li>
-              <%= link_to "新規登録", root_path, class:"nav-btn-center-right btn btn-outline-primary text-dark" %>
+              <%= link_to "新規登録", new_customer_registration_path, class:"nav-btn-center-right btn btn-outline-primary text-dark" %>
             </li>
 
             <li>
-              <%= link_to "ログイン", root_path, class:"nav-btn-right btn btn-outline-primary text-dark" %>
+              <%= link_to "ログイン", new_customer_session_path, class:"nav-btn-right btn btn-outline-primary text-dark" %>
             </li>
           </ul>
         <% end %>

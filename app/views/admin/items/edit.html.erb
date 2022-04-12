@@ -6,7 +6,7 @@
       <div class="title" >登録情報更新</div>
 
       <%= form_with model: @item, url: admin_item_path, local:true do |f| %>
-        <h6>商品画像(以前登録した画像は残りません)</h6>
+        <h6>商品画像(追加する場合以前登録した画像は残りません)</h6>
         <%= f.attachment_field :item_images_images, multiple: true %>
         <!--　:(子のテーブル名)_(image_id + s) =>:article_images_images (2つの"s"が必要です)。ただしrefileを使用するときはidを省略するので記述しない。
         属性を追加：~~~ , multiple: true　-->
